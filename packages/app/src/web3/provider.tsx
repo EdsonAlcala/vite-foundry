@@ -8,11 +8,11 @@ import { getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@ra
 import { injectedWallet, argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-    [baseGoerli, base, { ...localhost, chainId: process.env.NEXT_PUBLIC_CHAIN_ID || 31337 }],
-    [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID || "" }), publicProvider()],
+    [baseGoerli, base, { ...localhost, chainId: import.meta.env.VITE_APP_CHAIN_ID || 31337 }],
+    [alchemyProvider({ apiKey: import.meta.env.VITE_APP_ALCHEMY_ID || "" }), publicProvider()],
 )
 
-const PROJECT_ID = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID || "";
+const PROJECT_ID = import.meta.env.VITE_APP_WALLET_CONNECT_ID || "";
 const APP_NAME = "My App";
 
 const { wallets } = getDefaultWallets({

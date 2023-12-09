@@ -8,7 +8,7 @@ export default function Main() {
     return (
         <main className="flex flex-col mt-16 items-center justify-center">
 
-            <h1 className="text-4xl font-bold">Welcome to Next.js</h1>
+            <h1 className="text-4xl font-bold">Welcome to Vite</h1>
 
             {isConnected && <ConnectedView />}
 
