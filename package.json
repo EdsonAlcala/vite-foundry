@@ -1,6 +1,17 @@
 {
-  "name": "vite-foundry",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "name": "vite-foundry-boilerplate",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "chain": "source .env && yarn workspace foundry run chain",
+    "deploy": "source .env && yarn workspace foundry run deploy",
+    "dev": "source .env && yarn workspace app run dev",
+    "postinstall": "yarn workspace foundry run install"
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
