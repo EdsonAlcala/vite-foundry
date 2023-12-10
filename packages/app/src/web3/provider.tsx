@@ -9,7 +9,7 @@ import { injectedWallet, argentWallet } from '@rainbow-me/rainbowkit/wallets';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
     [baseGoerli, base, { ...localhost, chainId: import.meta.env.VITE_APP_CHAIN_ID || 31337 }],
-    [alchemyProvider({ apiKey: import.meta.env.VITE_APP_ALCHEMY_ID || "" }), publicProvider()],
+    [alchemyProvider({ apiKey: import.meta.env.VITE_APP_ALCHEMY_API_KEY || "" }), publicProvider()],
 )
 
 const PROJECT_ID = import.meta.env.VITE_APP_WALLET_CONNECT_ID || "";

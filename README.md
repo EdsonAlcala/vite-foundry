@@ -1,11 +1,11 @@
-# Build On Base Boilerplate (BoBB)
+# Build On Base Boilerplate (Vite + Foundry)
 
-Simple, minimalistic and opinionated [Next.js] + [Foundry] boilerplate to start developing Onchain Apps on Base.
+Simple, minimalistic and opinionated [Vite] + [Foundry] boilerplate to start developing Onchain Apps on Base.
 
 This boilerplate is designed to work with the following stack:
 
 - [Foundry]
-- [Next.js] - Next.js 14.0.2, with App router
+- [Vite] - Vite React TS
 - [Anvil]
 - [RainbowKit]
 - [Op-Wagmi]
@@ -14,7 +14,6 @@ This boilerplate is designed to work with the following stack:
 
 - Automatic React hooks generation ([see guide below](#automatic-react-hooks-generation))
 - Wallet integration with [RainbowKit]
-- Next.JS app router integration
 - Bring your own UI framework
 - [Tailwind CSS] integration
 
@@ -23,7 +22,7 @@ This boilerplate is designed to work with the following stack:
 - [NVM]
 - [Yarn] # Once you run `nvm use` install it globally via `corepack enable`
 - [Foundry]
-- [Alchemy provider]
+- [Alchemy API Key]
 - [Wallet connect id]
 
 *Note: Since WalletConnect requires a projectId and it is free and easy to get, we recommend getting a projectId from WalletConnect Cloud.
@@ -32,10 +31,12 @@ This boilerplate is designed to work with the following stack:
 
 The project consist of 2 packages:
 
-- [App](./packages/app) - Next.js 14.0.2, with App router
+- [App](./packages/app) - Vite
 - [Foundry](./packages/foundry/) - Smart contract project
 
 ## Getting started
+
+If you are setting up this boilerplate using the [Build On Base CLI] you can go to step 2.
 
 1. Clone the repository and install dependencies
 
@@ -53,8 +54,8 @@ $ yarn
 MNEMONIC
 BASESCAN_API_KEY
 CHAIN_ID
-NEXT_PUBLIC_WALLET_CONNECT_ID
-NEXT_PUBLIC_ALCHEMY_ID
+VITE_APP_WALLET_CONNECT_ID
+VITE_APP_ALCHEMY_API_KEY
 ```
 
 Check the `.env.sample` file that includes some default values.
@@ -73,7 +74,7 @@ yarn chain
 yarn deploy
 ```
 
-5. On a new terminal, start the NextJS app by running:
+5. On a new terminal, start the Vite app by running:
 
 ```bash
 yarn dev
@@ -142,14 +143,6 @@ _addExport("Contract3", address(contract3));
 _stopExport();
 ```
 
-## Roadmap
-
-[ ] Add deploy to vercel button
-
-[ ] Add support for op-wagmi
-
-[ ] Integrate [React hot toast] or [React toastify]
-
 ## Inspiration
 
 - [Scaffold-eth-2](https://github.com/scaffold-eth/scaffold-eth-2)
@@ -160,13 +153,14 @@ _stopExport();
 
 <!-- ## References -->
 
-[Next.js]: https://nextjs.org/docs/getting-started/installation
+[Build On Base CLI]: https://github.com/EdsonAlcala/build-on-base-cli
+[Vite]: https://vitejs.dev/
 [RainbowKit]: https://www.rainbowkit.com/docs/installation#further-examples
 [Tailwind]: https://tailwindui.com/
 [NVM]: https://github.com/nvm-sh/nvm
 [Yarn]: https://yarnpkg.com/
 [Foundry]: https://github.com/foundry-rs/foundry
-[Alchemy provider]: https://www.alchemy.com/
+[Alchemy API Key]: https://www.alchemy.com/
 [Wallet connect id]: https://cloud.walletconnect.com/sign-in
 [Rivet]: https://www.paradigm.xyz/2023/08/rivet
 [React toastify]: https://www.npmjs.com/package/react-toastify
