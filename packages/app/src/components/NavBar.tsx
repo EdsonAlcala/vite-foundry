@@ -1,6 +1,5 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-
 import Logo from './Logo';
+import ConnectButton from './ConnectButton';
 
 export default function NavBar() {
     return (
@@ -8,5 +7,5 @@ export default function NavBar() {
             <Logo />
             <ConnectButton />
         </nav>
-    )
+    );
 }
