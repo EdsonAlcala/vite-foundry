@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAccount, useConnect } from 'wagmi';
 import { injected } from 'wagmi/connectors';
-import Modal from './Modal';
+import ConnectionModal from './ConnectionModal';
 
 export default function ConnectButton() {
     const { connect } = useConnect();
@@ -32,7 +32,7 @@ export default function ConnectButton() {
                 </button>
             )}
 
-            {address && <Modal open={isModalOpen} setOpen={setIsModalOpen} />}
+            {address && <ConnectionModal open={isModalOpen} setOpen={setIsModalOpen} />}
 
         </div>
     );

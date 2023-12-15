@@ -1,42 +1,18 @@
 import React from 'react';
-import { WagmiConfig, configureChains, createConfig } from 'wagmi'
-import { base, baseGoerli, localhost } from 'wagmi/chains'
-import { alchemyProvider } from 'wagmi/providers/alchemy'
-import { publicProvider } from 'wagmi/providers/public'
 
-import { getDefaultWallets, RainbowKitProvider, connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { injectedWallet, argentWallet } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createConfig, http, WagmiProvider } from 'wagmi'
+import { goerli, baseGoerli, optimismGoerli } from 'wagmi/chains'
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-    [baseGoerli, base, { ...localhost, chainId: import.meta.env.VITE_APP_CHAIN_ID || 31337 }],
-    [alchemyProvider({ apiKey: import.meta.env.VITE_APP_ALCHEMY_API_KEY || "" }), publicProvider()],
-)
-
-const PROJECT_ID = import.meta.env.VITE_APP_WALLET_CONNECT_ID || "";
-const APP_NAME = "My App";
-
-const { wallets } = getDefaultWallets({
-    appName: APP_NAME,
-    projectId: PROJECT_ID,
-    chains
-});
-
-const connectors = connectorsForWallets([
-    ...wallets,
-    {
-        groupName: 'Other',
-        wallets: [
-            injectedWallet({ chains }),
-            argentWallet({ projectId: PROJECT_ID, chains }),
-        ],
-    },
-]);
+const queryClient = new QueryClient()
 
 const config = createConfig({
-    autoConnect: true,
-    connectors,
-    publicClient,
-    webSocketPublicClient,
+    chains: [goerli, baseGoerli, optimismGoerli],
+    transports: {
+        [goerli.id]: http(),
+        [baseGoerli.id]: http(),
+        [optimismGoerli.id]: http(),
+    },
 })
 
 interface Web3ProviderProps {
@@ -44,14 +20,11 @@ interface Web3ProviderProps {
 }
 
 export default function Web3Provider({ children }: Web3ProviderProps) {
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => setMounted(true), []);
-
     return (
-        <WagmiConfig config={config}>
-            <RainbowKitProvider chains={chains}>
-                {mounted && children}
-            </RainbowKitProvider>
-        </WagmiConfig>
+        <WagmiProvider config={config}>
+            <QueryClientProvider client={queryClient}>
+                {children}
+            </QueryClientProvider>
+        </WagmiProvider>
     )
 }
