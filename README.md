@@ -40,7 +40,7 @@ If you are setting up this boilerplate using the [Build On Base CLI] you can go 
 1. Clone the repository and install dependencies
 
 ```bash
-$ git clone https://github.com/edsonalcala/dapp-boilerplate
+$ git clone https://github.com/edsonalcala/vite-foundry
 
 $ nvm use
 
