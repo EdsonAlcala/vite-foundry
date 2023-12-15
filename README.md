@@ -8,7 +8,6 @@ This boilerplate is designed to work with the following stack:
 - [Vite] - Vite React TS
 - [Anvil]
 - [RainbowKit]
-- [Op-Wagmi]
 
 ## Features
 
