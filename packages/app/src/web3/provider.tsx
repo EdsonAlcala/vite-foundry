@@ -44,13 +44,10 @@ interface Web3ProviderProps {
 }
 
 export default function Web3Provider({ children }: Web3ProviderProps) {
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => setMounted(true), []);
-
     return (
         <WagmiConfig config={config}>
             <RainbowKitProvider chains={chains}>
-                {mounted && children}
+                {children}
             </RainbowKitProvider>
         </WagmiConfig>
     )
